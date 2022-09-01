@@ -5,7 +5,6 @@ import { LlamarLista } from "./llamarLista";
 import { MostrarLista } from "./mostrarLista";
 import { EstructuraDatos } from "./estructuraDatos";
 import { ContenidoDatos } from "./contenidoDatos";
-import { FooterP } from './footerP';
 import { HeaderP } from './headerP';
 
 
@@ -37,7 +36,9 @@ export const Practica1 = () => {
     <div>
       <HeaderP />
         <Saludar name = "Arturo" gusto = "Chilaquiles"/>
+        
         <Contador />
+        
         <LlamarLista>
           {misDatos.map(miDato =>(
             <MostrarLista 
@@ -63,7 +64,6 @@ export const Practica1 = () => {
               )
             }
         </EstructuraDatos>
-      <FooterP/>
     </div>
   )
 }

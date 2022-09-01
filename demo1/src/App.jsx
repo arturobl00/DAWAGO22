@@ -1,6 +1,5 @@
 import { Fragment } from "react";
 import { FooterP } from "./componentes/footerP";
-import { HeaderP } from "./componentes/headerP";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Practica1 } from "./componentes/practica1";
 import { Saludar } from "./componentes/saludar";
@@ -21,6 +20,7 @@ function App() {
             <Route path="*" element={<NoFound />}/>
           </Routes>
         </BrowserRouter>
+        <FooterP/>
       </div> 
     </Fragment>
   );

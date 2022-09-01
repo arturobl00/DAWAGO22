@@ -3,7 +3,7 @@ import { useState } from 'react'
 
 export const Contador = () => {
     //Con useState puedo declarar constantes, arreglos y objetos
-    const [conta, setConta] = useState(0)
+    const [conta, setConta] = useState(100)
   return (
     <div>
         <p>Has precionado # {conta} veces el boton</p>
