@@ -1,7 +1,7 @@
 import React from 'react'
 
-export const BaseDatos = () => {
-    netflix = [
+export const BaseDatos2 = () => {
+    const netflix = [
         {
           "show_id": 1,
           "type": "Movie",
@@ -904,6 +904,34 @@ export const BaseDatos = () => {
         }
       ]
   return (
-    <div>baseDatos</div>
+    <div>
+        <h2>Tabla las 100 Presentaciones más consumidas en Netflix</h2>
+        <table className='table table-light table-striped'>
+            <thead className='bg-danger'>
+                <th>ID</th>
+                <th>TYPE</th>
+                <th>TITLE</th>
+                <th>COUNTRY</th>
+                <th>RATING</th>
+                <th>DURATION</th>
+                <th>DESCRIPTION</th>
+            </thead>
+            <tbody>
+                {
+                    netflix.map(item => (
+                        <tr>
+                            <td>{item.show_id}</td>
+                            <td>{item.type}</td>
+                            <td>{item.title}</td>
+                            <td>{item.country}</td>
+                            <td>{item.rating}</td>
+                            <td>{item.duration}</td>
+                            <td>{item.description}</td>
+                        </tr>
+                    ))
+                }
+            </tbody>
+        </table>
+    </div>
   )
 }
