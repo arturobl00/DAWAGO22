@@ -1,0 +1,17 @@
+Crud de Firebase con React
+Nota consulta Documentación: https://bluuweb.github.io/react-udemy/07-crud-firestore/#crear-proyecto
+Paso1 Crear la Aplicación
+Paso2 Adecuar el Escenario (Eliminar los Archivos no necesarios y agregar Bootstrap)
+Paso3 Instalar Firebase versión Estable desde una consola Command Promp npm i firebase@8.7.1
+Paso4 Creamos un Archivo llamado firebase.js
+Paso5 Creamos un proyecto y una aplicación en firebase dawCrud nombre de proyecto
+Paso6 Creamos las credenciales de nuestro proyecto como una app web
+Paso7 Colocamos nuestras credenciales en el archivo firebase.js consulta repositorio para ver configuracion
+y como importamos las referencias:
+import firebase from 'firebase/app';
+import 'firebase/firestore';
+Paso8 Crear una base de datos en cloudfirestore y agregar documentos a mi base
+Paso9 Leer los datos de mi base empezamos por importar el objeto firebase
+import {firebase} from './firebase';
+Paso10 Para consumir el objeto usamos un hook llamado useEffect
+Paso11 Definir una funcion obtenerDatos

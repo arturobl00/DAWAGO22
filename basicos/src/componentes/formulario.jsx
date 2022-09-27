@@ -6,7 +6,9 @@ export const Formulario = () => {
     const [descripcion, setDescripcion] = useState("")
     
    
-    const [miDato, setMiDato] = useState ([])
+    const [miDato, setMiDato] = useState ([1,2,3,4,5,6,"Hola"])
+
+    const [objeto, setMiObjeto] = useState ([{nFruta: null, nDescripcion: null}])
 
 
     console.log(fruta)
@@ -30,6 +32,12 @@ export const Formulario = () => {
         setMiDato([
             ...miDato, fruta + " " + descripcion
         ])
+
+        setMiObjeto(
+            [
+                ...objeto, {nFruta: fruta, nDescripcion: descripcion}
+            ]
+        )
 
         e.target.reset()
         setFruta('')
@@ -56,11 +64,24 @@ export const Formulario = () => {
                 <button className="btn btn-primary btn-block" type="submit">Agregar</button>
             </form>
         </div>
+
         <br/>
             <ul>
             {
                 miDato.map(
-                    (item, index) => <li key={index}>{item}</li>
+                    (item, index) => <li key={index}>{item} - Array</li>
+                )
+            }
+        </ul>
+
+        <br/>
+            <ul>
+            {
+                objeto.map(
+                    (item, index) =>
+                        <li key={index}> 
+                            {item.nFruta} {item.nDescripcion}
+                        </li>
                 )
             }
         </ul>
