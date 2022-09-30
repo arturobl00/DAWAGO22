@@ -5,6 +5,10 @@ function App() {
 
   //Arreglo que mantenga lo datos durante la ejecución
   const [tareas, setTareas] = useState([])
+  const [tarea, setTarea] = useState("")
+  const [estado, setEstado] = useState("")
+
+  //console.log("Esto tengo en:", tarea);
 
   //Consumir el api de firebase
   useEffect(() =>{
@@ -27,6 +31,41 @@ function App() {
     }
     obtenerDatos()
   }, [])
+
+
+  //Funcion para Agregar datos
+  const agregar = async (e) => {
+    e.preventDefault()
+    if(!tarea.trim() || !estado.trim()){
+      console.log('Formulario Incompleto')
+      return
+    }
+    try {
+      const db = firebase.firestore()
+      //PAra ver los datos desde el frontEnd
+      const captura = {
+        nombre: tarea,
+        estado: estado
+      }
+      //Constate es para mandar los datos al Firebase
+      const data = await db.collection('tareas').add({
+        nombre: tarea,
+        estado: estado
+      })
+
+      setTareas([
+        ...tareas, {id: data.id, ...captura}
+      ])
+
+      console.log("Dato Registrado")
+      setTarea("")
+      setEstado("")
+      
+    } catch (error) {
+      console.log(error)
+    }
+    console.log(tarea, estado)
+  }
 
   return (
     <div className="container-fluid">
@@ -56,6 +95,30 @@ function App() {
       </div>
       <div className="col-md-6">
           <h3>Formulario Agregar Elemento</h3>
+          <form onSubmit={agregar}>
+            <input
+              className="form-control"
+              type="text"
+              placeholder="Ingrese Tarea"
+              onChange={e => setTarea(e.target.value)}
+              value = {tarea}
+            />
+            <br/>
+            <input
+              className="form-control"
+              type="text"
+              placeholder="Ingrese Estado"
+              onChange={e => setEstado(e.target.value)}
+              value={estado}
+            />
+            <br/>
+            <button
+             type="submit" 
+             className="btn btn-primary"
+             >
+              Agregar
+            </button>
+          </form>
       </div>
     </div>
   );
