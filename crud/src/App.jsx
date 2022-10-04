@@ -7,6 +7,8 @@ function App() {
   const [tareas, setTareas] = useState([])
   const [tarea, setTarea] = useState("")
   const [estado, setEstado] = useState("")
+  const [modoEdicion, setModoEdicion] = useState(false)
+  const [mId, setMid] = useState("")
 
   //console.log("Esto tengo en:", tarea);
 
@@ -67,6 +69,25 @@ function App() {
     console.log(tarea, estado)
   }
 
+  const eliminar = async (id) =>{
+    console.log("Eliminar registro",id)
+    try {
+      const db = firebase.firestore()
+      await db.collection('tareas').doc(id).delete()
+      const arryafiltrado = tareas.filter(item => item.id != id)
+      setTareas(arryafiltrado)
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
+  const activaEdicion = (item) => {
+    setModoEdicion(true)
+    setTarea(item.nombre)
+    setEstado(item.estado)
+    setMid(item.id)
+  }
+
   return (
     <div className="container-fluid">
       <h1>CRUD React con Firebase</h1>
@@ -78,6 +99,8 @@ function App() {
             <th>ID</th>
             <th>NOMBRE</th>
             <th>ESTADO</th>
+            <th>ELIMINAR</th>
+            <th>EDITAR</th>
           </tr>
         </thead>
         <tbody>
@@ -87,6 +110,17 @@ function App() {
                 <td>{item.id}</td>
                 <td>{item.nombre}</td>
                 <td>{item.estado}</td>
+                <td>
+                  <button 
+                  className="btn btn-danger"
+                  onClick={() => eliminar(item.id)}
+                  >
+                    Eliminar
+                  </button>
+                </td>
+                <td><button className="btn btn-warning"
+                onClick={() => activaEdicion(item)}
+                >Editar</button></td>
               </tr>
             ))
           }
@@ -94,7 +128,11 @@ function App() {
       </table>
       </div>
       <div className="col-md-6">
-          <h3>Formulario Agregar Elemento</h3>
+          <h3>
+            {
+              modoEdicion ? 'Formulario Editar Elemento' : 'Formulario Agregar Elemento'
+            }
+          </h3>
           <form onSubmit={agregar}>
             <input
               className="form-control"
@@ -114,9 +152,13 @@ function App() {
             <br/>
             <button
              type="submit" 
-             className="btn btn-primary"
+             className={
+              modoEdicion ? "btn btn-warning" : "btn btn-primary"
+             }
              >
-              Agregar
+              {
+                modoEdicion ? "Editar" : "Agregar"
+              }
             </button>
           </form>
       </div>
