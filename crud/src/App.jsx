@@ -88,6 +88,31 @@ function App() {
     setMid(item.id)
   }
 
+  const editar = async (e) => {
+    e.preventDefault()
+    if(!tarea.trim() || !estado.trim()){
+      console.log('Formulario Incompleto')
+      return
+    }
+    try {
+      const db = firebase.firestore()
+      await db.collection('tareas').doc(mId).update({
+        nombre: tarea,
+        estado: estado
+      })
+      const arrayEditado = tareas.map(item => (
+        item.id == mId ? {id: mId, nombre: tarea, estado: estado} : item
+      ))
+      setTareas(arrayEditado)
+      setModoEdicion(false)
+      setMid("")
+      setTarea("")
+      setEstado("")
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
   return (
     <div className="container-fluid">
       <h1>CRUD React con Firebase</h1>
@@ -133,7 +158,7 @@ function App() {
               modoEdicion ? 'Formulario Editar Elemento' : 'Formulario Agregar Elemento'
             }
           </h3>
-          <form onSubmit={agregar}>
+          <form onSubmit={modoEdicion ? editar : agregar}>
             <input
               className="form-control"
               type="text"
