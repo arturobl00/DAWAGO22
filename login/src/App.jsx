@@ -1,13 +1,23 @@
-import React from "react";
+import React, { useState } from "react";
 import './sing.css';
+import logo from './imagenes/logo.png';
 
 function App() {
+
+  const [bandera, setBandera] = useState(true);
+
+  const activaBandera = () =>{
+    setBandera(false)
+  }
+
   return (
     <div className="container mt-4">
       <div className="mibody">
       <form>
-        <img className="mb-4" src="../assets/brand/bootstrap-logo.svg" alt="" width="72" height="57"/>
-        <h1 className="h3 mb-3 fw-normal">Please sign in</h1>
+        <img className="mb-4" src={logo} alt="" width="72" height="72"/>
+        <h1 className="h3 mb-3 fw-normal">{
+          bandera ? 'Please Login' : 'Please Sing in'
+        }</h1>
 
         <div className="form-floating">
           <input type="email" className="form-control" id="floatingInput" placeholder="name@example.com"/>
@@ -15,17 +25,25 @@ function App() {
         </div>
         
         <div className="form-floating">
-          <input type="password" className="form-control" id="floatingPassword" placeholder="Password"/>
+          <input type="password" className="form-control mt-2" id="floatingPassword" placeholder="Password"/>
           <label for="floatingPassword">Password</label>
         </div>
 
-        <div className="checkbox mb-3">
+        <div className="checkbox mt-2 mb-3">
           <label>
             <input type="checkbox" value="remember-me"/> Remember me
           </label>
         </div>
-        <button className="w-100 btn btn-lg btn-primary" type="submit">Sign in</button>
-        <p class="mt-5 mb-3 text-muted">&copy; 2017–2022</p>
+        {
+          bandera ? <div>
+          <button className="w-100 btn btn-lg btn-primary" type="submit">Login</button>
+          <button className="w-100 btn btn-lg btn-secondary mt-2" type="submit">Sing in</button>
+          </div> : <div>
+          <button className="w-100 btn btn-lg btn-primary" type="submit">Sing in</button>
+          <button className="w-100 btn btn-lg btn-secondary mt-2" type="submit">Login</button>
+          </div>
+        }
+        <p class="mt-3 mb-3 text-muted"><b>&copy; 2017–2022</b></p>
       </form>
       </div>
     </div>

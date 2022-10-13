@@ -3,7 +3,6 @@ import {firebase} from './firebase';
 import { Formulario } from "./Formulario";
 
 function App() {
-  /*
   //Arreglo que mantenga lo datos durante la ejecución
   const [tareas, setTareas] = useState([])
   const [tarea, setTarea] = useState("")
@@ -194,10 +193,6 @@ function App() {
       <Formulario/>
       <br/>
       <br/>
-    </div>*/
-    return(
-    <div>
-      <Formulario/>
     </div>
   );
 }
