@@ -25,7 +25,7 @@ function App() {
     }
 
     setErrores(null)
-    bandera ? console.log("Login") : signin()
+    bandera ? login() : signin()
 
   }
 
@@ -41,6 +41,19 @@ function App() {
         setErrores(error)
       }
     }, [email, pass])
+
+    const login = useCallback(
+      async() => {
+        try {
+          const auth = firebase.auth()
+          const res = await auth.signInWithEmailAndPassword(email, pass)
+          console.log("Login as:", res.user)
+          setPass("")
+          setEmail("")
+        } catch (error) {
+          setErrores(error)
+        }
+      }, [email, pass])
 
 
   //console.log("De email",email, "de el pass", pass)
