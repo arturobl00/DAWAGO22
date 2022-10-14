@@ -6,14 +6,14 @@ function App() {
 
   const [bandera, setBandera] = useState(true);
 
-  const activaBandera = () =>{
-    setBandera(false)
+  const cambiaBandera = () =>{
+    bandera ? setBandera(false) : setBandera(true)
   }
 
   return (
     <div className="container mt-4">
       <div className="mibody">
-      <form>
+      <div>
         <img className="mb-4" src={logo} alt="" width="72" height="72"/>
         <h1 className="h3 mb-3 fw-normal">{
           bandera ? 'Please Login' : 'Please Sing in'
@@ -36,15 +36,15 @@ function App() {
         </div>
         {
           bandera ? <div>
-          <button className="w-100 btn btn-lg btn-primary" type="submit">Login</button>
-          <button className="w-100 btn btn-lg btn-secondary mt-2" type="submit">Sing in</button>
+          <button className="w-100 btn btn-lg btn-primary">Login</button>
+          <button className="w-100 btn btn-lg btn-secondary mt-2" onClick={() => cambiaBandera()}>Sing in</button>
           </div> : <div>
-          <button className="w-100 btn btn-lg btn-primary" type="submit">Sing in</button>
-          <button className="w-100 btn btn-lg btn-secondary mt-2" type="submit">Login</button>
+          <button className="w-100 btn btn-lg btn-primary">Sing in</button>
+          <button className="w-100 btn btn-lg btn-secondary mt-2" onClick={() => cambiaBandera()}>Login</button>
           </div>
         }
         <p class="mt-3 mb-3 text-muted"><b>&copy; 2017–2022</b></p>
-      </form>
+      </div>
       </div>
     </div>
   );
