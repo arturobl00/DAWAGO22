@@ -3,7 +3,7 @@ import './sing.css';
 import logo from './imagenes/logo.png';
 import {firebase} from './firebase';
 import {BrowserRouter as Router, Switch, Route} from "react-router-dom";
-import Dashboard from "./Dashboard";
+import Inicio from "./Inicio";
 function App() {
 
   const [bandera, setBandera] = useState(true)
@@ -128,8 +128,8 @@ function App() {
       </div>
     </div>
         </Route>
-        <Route path="/dashboard">
-          <Dashboard />
+        <Route path="/inicio">
+          <Inicio/>
         </Route>
       </Switch>
     </Router>
