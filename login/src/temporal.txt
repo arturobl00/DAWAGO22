@@ -1,73 +1,4 @@
-import React, { useCallback, useState } from "react";
-import './sing.css';
-import logo from './imagenes/logo.png';
-import {firebase} from './firebase';
-import {BrowserRouter as Router, Switch, Route} from "react-router-dom";
-import Dashboard from "./Dashboard";
-function App() {
-
-  const [bandera, setBandera] = useState(true)
-  const [email, setEmail] = useState("")
-  const [pass, setPass] = useState("")
-  const [errores, setErrores] = useState("")
-
-  const registrar = e => {
-    //Validacion
-    e.preventDefault()
-    if(!email.trim() || !pass.trim()){
-      setErrores("Faltan elementos por Capturar")
-      return
-    }
-
-    if(pass.length<6){
-      setErrores("Se requieren min 6 Caracteres")
-      return
-    }
-
-    setErrores(null)
-    bandera ? login() : signin()
-
-  }
-
-  const signin = useCallback(
-    async() => {
-      try {
-        const auth = firebase.auth()
-        const res = await auth.createUserWithEmailAndPassword(email, pass)
-        console.log(res.user)
-        setPass("")
-        setEmail("")
-      } catch (error) {
-        setErrores(error)
-      }
-    }, [email, pass])
-
-    const login = useCallback(
-      async() => {
-        try {
-          const auth = firebase.auth()
-          const res = await auth.signInWithEmailAndPassword(email, pass)
-          console.log("Login as:", res.user)
-          setPass("")
-          setEmail("")
-        } catch (error) {
-          setErrores(error)
-        }
-      }, [email, pass])
-
-
-  //console.log("De email",email, "de el pass", pass)
-
-  const cambiaBandera = () =>{
-    bandera ? setBandera(false) : setBandera(true)
-  }
-
-  return (
-    //Rutas de Navegación
-    <Router>
-      <Switch>
-        <Route path="/" exact>
-        <div className="container mt-4">
+<div className="container mt-4">
       <div className="mibody">
       <div>
         <form onSubmit={registrar}>
@@ -127,13 +58,3 @@ function App() {
       </div>
       </div>
     </div>
-        </Route>
-        <Route path="/dashboard">
-          <Dashboard />
-        </Route>
-      </Switch>
-    </Router>
-  );
-}
-
-export default App;
