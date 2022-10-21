@@ -24,9 +24,10 @@ ChartJS.register(
   Filler
 );
 
-const scores = [6, 5, 5, 5, 3, 4, 6, 4, 5];
-const scores2 = [1, 3, 2, 2, 4, 4, 5, 3, 2];
-const labels = [100, 200, 300, 400, 500, 600, 700];
+const scores = [1, 3, 5, 5, 3, 4, 6, 4, 1];
+const scores2 = [1, 3, 2, 2, 4, 4, 9, 3, 2];
+const scores3 = [7, 8, 2, 3, 4, 9, 5, 5, 2];
+const labels = [10, 20, 30, 40, 50, 600, 700, 800, 900];
 
 const options = {
   fill: true,
@@ -64,6 +65,14 @@ export default function LineChart() {
           backgroundColor: "rgba(0, 255, 0, 0.3)",
           pointRadius: 6,
         },
+        {
+            label: "Mis datos (3)",
+            tension: 0.3,
+            data: scores3,
+            borderColor: "green",
+            backgroundColor: "rgba(255, 0, 0, 0.3)",
+            pointRadius: 6,
+          },
       ],
       labels,
     };
