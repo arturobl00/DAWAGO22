@@ -12,7 +12,7 @@ function App() {
       width:500,
       margin:1,
       color: {
-        dark: '#28a745'
+        dark: '#FF0000'
       }
     },
       (err, matricula) =>{
