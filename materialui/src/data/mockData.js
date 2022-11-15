@@ -73,6 +73,14 @@ export const mockDataTeam = [
     phone: "(444)555-6239",
     access: "admin",
   },
+  {
+    id: 10,
+    name: "Ricardo Emmanuel",
+    email: "2011102@ajalpan.tecnm.edu.mx",
+    age: 20,
+    phone: "2383932390",
+    access: "manager",
+  },
 ];
 
 export const mockDataContacts = [
