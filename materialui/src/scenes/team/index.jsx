@@ -1,5 +1,5 @@
 import { Box, Typography, useTheme } from "@mui/material";
-import { DataGrid } from "@mui/x-data-grid";
+import { DataGrid, GridToolbar } from "@mui/x-data-grid";
 import { tokens } from "../../theme";
 import { mockDataTeam } from "../../data/mockData";
 import AdminPanelSettingsOutlinedIcon from "@mui/icons-material/AdminPanelSettingsOutlined";
@@ -11,7 +11,7 @@ const Team = () => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
   const columns = [
-    { field: "id", headerName: "ID" },
+    { field: "id", headerName: "IDENTIFY" },
     {
       field: "name",
       headerName: "Name",
@@ -98,9 +98,12 @@ const Team = () => {
           "& .MuiCheckbox-root": {
             color: `${colors.greenAccent[200]} !important`,
           },
+          "& .MuiDataGrid-toolbarContainer .MuiButton-text": {
+            color: `${colors.grey[100]} !important`,
+          },
         }}
       >
-        <DataGrid checkboxSelection rows={mockDataTeam} columns={columns} />
+        <DataGrid checkboxSelection rows={mockDataTeam} columns={columns} components={{ Toolbar: GridToolbar }}/>
       </Box>
     </Box>
   );
