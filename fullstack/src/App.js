@@ -1,5 +1,5 @@
 import Topbar from "./scene/global/Topbar";
-import { CssBaseline, ThemeProvider, Menu } from "@mui/material";
+import { CssBaseline, ThemeProvider } from "@mui/material";
 import { ColorModeContext, useMode } from "./theme";
 import { Route, Routes } from "react-router-dom";
 
@@ -15,6 +15,7 @@ import FAQ from "./scene/faq"
 import Bar from "./scene/bar";
 import Pie from "./scene/pie";
 import Line from "./scene/line";
+import Geography from "./scene/geography";
 
 function App() {
   const [theme, colorMode] = useMode();
@@ -38,6 +39,7 @@ function App() {
               <Route path="/bar" element={<Bar />}/>
               <Route path="/pie" element={<Pie />}/>
               <Route path="/line" element={<Line />}/>
+              <Route path="/geography" element={<Geography />}/>
             </Routes>
           </main>
         </div>

@@ -17,6 +17,7 @@ import { PieChartOutlineOutlined } from '@mui/icons-material'
 import { TimelineOutlined } from '@mui/icons-material'
 import { MenuOutlined } from '@mui/icons-material'
 import { MapOutlined } from '@mui/icons-material'
+import { PublicOutlined } from '@mui/icons-material'
 
 import usuario from '../../assets/user.jpg'
 
@@ -84,7 +85,7 @@ const Sidebar = () => {
                 ml="15px"
               >
                 <Typography variant="h3" color={colors.grey[100]}>
-                  ADMINISTRATOR
+                  ADMINISTRADOR
                 </Typography>
                 <IconButton onClick={() => setIsCollapsed(!isCollapsed)}>
                   <MenuOutlined />
@@ -111,7 +112,7 @@ const Sidebar = () => {
                   fontWeight="bold"
                   sx={{ m: "10px 0 0 0" }}
                 >
-                  J. Arturo Bustamante Lazcano
+                  Bill Gates
                 </Typography>
                 <Typography variant="h5" color={colors.greenAccent[500]}>
                   Rol Admin
@@ -122,7 +123,7 @@ const Sidebar = () => {
 
           <Box paddingLeft={isCollapsed ? undefined : "10%"}>
             <Item
-              title="Dashboard"
+              title="Panel de Control"
               to="/"
               icon={<HomeOutlined />}
               selected={selected}
@@ -134,24 +135,24 @@ const Sidebar = () => {
               color={colors.grey[300]}
               sx={{ m: "15px 0 5px 20px" }}
             >
-              Data
+              Registros Data
             </Typography>
             <Item
-              title="Manage Team"
+              title="Equipo de Trabajo"
               to="/team"
               icon={<PeopleOutline />}
               selected={selected}
               setSelected={setSelected}
             />
             <Item
-              title="Contacts Information"
+              title="Contactos"
               to="/contacts"
               icon={<ContactsOutlined />}
               selected={selected}
               setSelected={setSelected}
             />
             <Item
-              title="Invoices Balances"
+              title="Registro de Entradas"
               to="/invoices"
               icon={<ReceiptOutlined />}
               selected={selected}
@@ -163,24 +164,24 @@ const Sidebar = () => {
               color={colors.grey[300]}
               sx={{ m: "15px 0 5px 20px" }}
             >
-              Pages
+              Modulos
             </Typography>
             <Item
-              title="Profile Form"
+              title="Formulario de Registro"
               to="/form"
               icon={<PersonOutlined />}
               selected={selected}
               setSelected={setSelected}
             />
             <Item
-              title="Calendar"
+              title="Calendario Actividades"
               to="/calendar"
               icon={<CalendarTodayOutlined />}
               selected={selected}
               setSelected={setSelected}
             />
             <Item
-              title="FAQ Page"
+              title="Preguntas Frecuentes"
               to="/faq"
               icon={<HelpOutlineOutlined />}
               selected={selected}
@@ -192,31 +193,31 @@ const Sidebar = () => {
               color={colors.grey[300]}
               sx={{ m: "15px 0 5px 20px" }}
             >
-              Charts
+              Graficas
             </Typography>
             <Item
-              title="Bar Chart"
+              title="Grafico de Barras"
               to="/bar"
               icon={<BarChartOutlined />}
               selected={selected}
               setSelected={setSelected}
             />
             <Item
-              title="Pie Chart"
+              title="Grafico de Pastel"
               to="/pie"
               icon={<PieChartOutlineOutlined />}
               selected={selected}
               setSelected={setSelected}
             />
             <Item
-              title="Line Chart"
+              title="Grafico Lineas"
               to="/line"
               icon={<TimelineOutlined />}
               selected={selected}
               setSelected={setSelected}
             />
             <Item
-              title="Geography Chart"
+              title="Grafico Geografico"
               to="/geography"
               icon={<MapOutlined />}
               selected={selected}
